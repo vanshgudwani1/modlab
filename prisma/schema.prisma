@@ -1,0 +1,69 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String     @id @default(cuid())
+  name      String?
+  email     String     @unique
+  image     String?
+  password  String?
+  role      String     @default("user") // "user" | "admin"
+  createdAt DateTime   @default(now())
+  posts     Post[]
+  creations Creation[]
+  orders    Order[]
+}
+
+model Creation {
+  id        String   @id @default(cuid())
+  userId    String
+  imageUrl  String
+  style     String
+  prompt    String?
+  isPublic  Boolean  @default(false)
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+model Post {
+  id        String   @id @default(cuid())
+  userId    String
+  title     String
+  content   String
+  category  String // "forum" | "announcement"
+  isPinned  Boolean  @default(false)
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+model Product {
+  id          String   @id @default(cuid())
+  name        String
+  slug        String   @unique
+  image       String?
+  description String
+  price       Float
+  stock       Int
+  isLimited   Boolean  @default(false)
+  maxSupply   Int?
+  dropDate    DateTime?
+  createdAt   DateTime @default(now())
+  orders      Order[]
+}
+
+model Order {
+  id        String   @id @default(cuid())
+  userId    String
+  productId String
+  quantity  Int
+  status    String // "pending" | "completed" | "cancelled"
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+  product   Product  @relation(fields: [productId], references: [id])
+}
