@@ -64,7 +64,7 @@ export default function HomeClient({ products }: { products: Product[] }) {
     return (
         <div
             ref={containerRef}
-            className="bg-[#f0f0f0] pt-32 pb-24 px-4 md:px-10 overflow-x-hidden relative"
+            className="bg-[#f0f0f0] pt-20 md:pt-32 pb-12 md:pb-24 px-4 md:px-10 overflow-x-hidden relative"
         >
             {/* ------------------ KINETIC BACKGROUND ------------------ */}
             {!prefersReducedMotion && (
@@ -79,7 +79,7 @@ export default function HomeClient({ products }: { products: Product[] }) {
                 </div>
             )}
 
-            <main className="max-w-7xl mx-auto space-y-48 relative z-10 perspective-[1000px]">
+            <main className="max-w-7xl mx-auto space-y-16 md:space-y-48 relative z-10 perspective-[1000px]">
 
                 {/* ------------------ HERO ------------------ */}
                 <motion.section
@@ -87,14 +87,14 @@ export default function HomeClient({ products }: { products: Product[] }) {
                     whileInView="visible"
                     viewport={{ once: true }}
                     style={{ y: yHero, rotateX: smoothSkew }}
-                    className="relative"
+                    className="relative pt-10 md:pt-0"
                 >
                     <HeroScene />
                     <motion.div
                         variants={panelPop}
-                        className="bg-cyan-400 border-[10px] border-black shadow-[25px_25px_0px_#000] p-12 -rotate-1 relative z-10 overflow-hidden"
+                        className="bg-cyan-400 border-[6px] md:border-[10px] border-black shadow-[10px_10px_0px_#000] md:shadow-[25px_25px_0px_#000] p-6 md:p-12 -rotate-1 relative z-10 overflow-hidden max-w-[95%] mx-auto"
                     >
-                        <h1 className="text-[clamp(60px,12vw,160px)] font-black italic uppercase leading-none tracking-tighter text-white drop-shadow-[8px_8px_0px_#000] mix-blend-hard-light relative z-20">
+                        <h1 className="text-[clamp(40px,12vw,160px)] font-black italic uppercase leading-none tracking-tighter text-white drop-shadow-[4px_4px_0px_#000] md:drop-shadow-[8px_8px_0px_#000] mix-blend-hard-light relative z-20 text-center md:text-left">
                             <GlitchText text="MOD LAB" />
                             <br />
                             <span className="text-black">STUDIO</span>

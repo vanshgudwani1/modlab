@@ -17,9 +17,9 @@ export default function Header({ user }: { user?: any }) {
       <motion.header
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        className="fixed top-0 left-0 w-full z-[100] p-2 md:p-4 flex justify-center pointer-events-none"
+        className="fixed top-0 left-0 w-full z-[100] p-4 flex justify-center pointer-events-none"
       >
-        <div className="bg-black border-[2px] md:border-[4px] border-white shadow-[4px_4px_0px_#ec008c] md:shadow-[8px_8px_0px_#ec008c] px-4 md:px-8 py-2 md:py-3 flex items-center justify-between md:justify-center gap-4 md:gap-12 pointer-events-auto -rotate-1 skew-x-[-5deg] md:skew-x-[-10deg] w-full max-w-[95%] md:max-w-fit">
+        <div className="bg-black/90 backdrop-blur-md border-[2px] border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.3)] px-4 py-3 rounded-2xl flex items-center justify-between pointer-events-auto w-full max-w-[95%] md:max-w-fit md:rounded-none md:bg-black md:border-[4px] md:border-white md:shadow-[8px_8px_0px_#ec008c] md:px-8 md:-rotate-1 md:skew-x-[-10deg]">
 
           {/* Mobile Menu Toggle */}
           <button onClick={toggleMobileMenu} className="md:hidden text-white hover:text-cyan-400">
