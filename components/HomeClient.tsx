@@ -163,7 +163,7 @@ export default function HomeClient({ products }: { products: Product[] }) {
                             transition={{ repeat: Infinity, duration: 4 }}
                             className="border-l-8 border-pink-500 pl-6 italic uppercase relative z-10"
                         >
-                            <p className="text-3xl leading-none font-bold">
+                            <p className="text-xl md:text-3xl leading-none font-bold">
                                 "THE HAND-PAINTING QUALITY IS MOVIE STUDIO LEVEL."
                             </p>
                             <p className="text-right text-sm font-mono text-neutral-400 mt-4">- Verified Agent</p>
@@ -178,7 +178,7 @@ export default function HomeClient({ products }: { products: Product[] }) {
                         whileInView={{ scaleX: 1 }}
                         className="bg-black text-white py-4 -rotate-1 origin-left"
                     >
-                        <h2 className="text-6xl font-black italic uppercase text-center">
+                        <h2 className="text-3xl md:text-6xl font-black italic uppercase text-center">
                             The_Vault_Inventory
                         </h2>
                     </motion.div>
@@ -228,26 +228,26 @@ export default function HomeClient({ products }: { products: Product[] }) {
                 {/* ------------------ COMPARISON ------------------ */}
                 <motion.section
                     style={{ skewX: smoothSkew }}
-                    className="bg-black border-[10px] border-white shadow-[25px_25px_0px_#000] p-12 overflow-x-auto"
+                    className="bg-black border-[6px] md:border-[10px] border-white shadow-[10px_10px_0px_#000] md:shadow-[25px_25px_0px_#000] p-4 md:p-12 overflow-x-auto"
                 >
-                    <table className="w-full text-white text-left font-black italic uppercase text-2xl tracking-tighter">
+                    <table className="w-full text-white text-left font-black italic uppercase text-sm md:text-2xl tracking-tighter">
                         <thead>
                             <tr className="border-b-4 border-cyan-400">
-                                <th className="py-6">Protocol</th>
+                                <th className="py-3 md:py-6">Protocol</th>
                                 <th className="text-cyan-400">MOD LAB</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td className="py-6">Acquisition</td>
+                                <td className="py-3 md:py-6">Acquisition</td>
                                 <td className="text-cyan-400">WORLDWIDE_DEPLOY</td>
                             </tr>
                             <tr>
-                                <td className="py-6">Artistry</td>
+                                <td className="py-3 md:py-6">Artistry</td>
                                 <td className="text-cyan-400">HAND_FINISHED</td>
                             </tr>
                             <tr>
-                                <td className="py-6">Exclusivity</td>
+                                <td className="py-3 md:py-6">Exclusivity</td>
                                 <td className="text-cyan-400">LIMITED_EDITION</td>
                             </tr>
                         </tbody>
@@ -266,7 +266,7 @@ export default function HomeClient({ products }: { products: Product[] }) {
                     }}
                     whileTap={{ scale: 0.95 }}
                     transition={{ duration: 0.1 }}
-                    className="w-full bg-cyan-400 text-black border-[10px] border-black shadow-[30px_30px_0px_#ec008c] py-20 text-[clamp(40px,8vw,110px)] font-black italic uppercase tracking-tighter mb-20"
+                    className="w-full bg-cyan-400 text-black border-[6px] md:border-[10px] border-black shadow-[15px_15px_0px_#ec008c] md:shadow-[30px_30px_0px_#ec008c] py-10 md:py-20 text-[clamp(30px,8vw,110px)] font-black italic uppercase tracking-tighter mb-10 md:mb-20"
                 >
                     CLAIM_YOUR_SLOT
                 </motion.button>
@@ -276,9 +276,9 @@ export default function HomeClient({ products }: { products: Product[] }) {
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ amount: 0.3 }}
-                        className="mb-12"
+                        className="mb-8 md:mb-12"
                     >
-                        <h2 className="text-6xl font-black italic uppercase text-center mb-8 relative z-10">
+                        <h2 className="text-4xl md:text-6xl font-black italic uppercase text-center mb-8 relative z-10">
                             <span className="bg-yellow-400 px-4 border-[6px] border-black shadow-[10px_10px_0px_#000]">
                                 The_Armory
                             </span>
@@ -293,14 +293,14 @@ export default function HomeClient({ products }: { products: Product[] }) {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ delay: i * 0.2 }}
                                 whileHover={{ y: -10, boxShadow: "15px 15px 0px #ec008c" }}
-                                className="h-64 bg-black border-[6px] border-black shadow-[10px_10px_0px_#000] flex items-center justify-center relative overflow-hidden group cursor-pointer"
+                                className="h-48 md:h-64 bg-black border-[6px] border-black shadow-[10px_10px_0px_#000] flex items-center justify-center relative overflow-hidden group cursor-pointer"
                             >
                                 <div className="absolute inset-0 bg-neutral-900 group-hover:bg-neutral-800 transition-colors" />
                                 <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:20px_20px]" />
-                                <h3 className="relative z-10 text-4xl font-black italic uppercase text-white group-hover:text-cyan-400 transition-colors">
+                                <h3 className="relative z-10 text-3xl md:text-4xl font-black italic uppercase text-white group-hover:text-cyan-400 transition-colors">
                                     {cat}
                                 </h3>
-                                <div className="absolute bottom-4 right-4 text-xs font-mono text-neutral-500 uppercase">
+                                <div className="absolute bottom-4 right-4 text-[10px] md:text-xs font-mono text-neutral-500 uppercase">
                                     // Deployment_Ready
                                 </div>
                             </motion.div>
@@ -309,16 +309,16 @@ export default function HomeClient({ products }: { products: Product[] }) {
                 </section>
 
                 {/* ------------------ SECTION 2: TECH SPECS (Materials) ------------------ */}
-                <section className="bg-white border-[8px] border-black p-12 shadow-[20px_20px_0px_#00ffff] relative overflow-hidden">
-                    <div className="absolute top-0 right-0 p-4 font-mono text-xs font-bold bg-black text-white">
+                <section className="bg-white border-[8px] border-black p-6 md:p-12 shadow-[10px_10px_0px_#00ffff] md:shadow-[20px_20px_0px_#00ffff] relative overflow-hidden">
+                    <div className="absolute top-0 right-0 p-2 md:p-4 font-mono text-[10px] md:text-xs font-bold bg-black text-white">
                         SPEC_SHEET_V9
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
                         <div>
-                            <h2 className="text-5xl font-black italic uppercase mb-8 leading-none">
+                            <h2 className="text-3xl md:text-5xl font-black italic uppercase mb-8 leading-none">
                                 MATERIAL<br />SUPERIORITY
                             </h2>
-                            <ul className="space-y-6 font-mono text-lg">
+                            <ul className="space-y-6 font-mono text-sm md:text-lg">
                                 <li className="flex items-start gap-4">
                                     <span className="bg-cyan-400 text-black px-2 font-bold mt-1">01</span>
                                     <span><strong>High-Impact Resin:</strong> Shatter-resistant polymer blend designed for durability, not just display.</span>
@@ -344,14 +344,14 @@ export default function HomeClient({ products }: { products: Product[] }) {
                             <motion.div
                                 animate={{ x: [0, 10, 0] }}
                                 transition={{ repeat: Infinity, duration: 2 }}
-                                className="absolute top-1/4 left-10 bg-black text-white text-xs px-2 py-1 font-mono"
+                                className="absolute top-1/4 left-5 md:left-10 bg-black text-white text-[10px] md:text-xs px-2 py-1 font-mono"
                             >
                                 ← CORE_DENSITY
                             </motion.div>
                             <motion.div
                                 animate={{ x: [0, -10, 0] }}
                                 transition={{ repeat: Infinity, duration: 2.5 }}
-                                className="absolute bottom-1/3 right-10 bg-black text-white text-xs px-2 py-1 font-mono"
+                                className="absolute bottom-1/3 right-5 md:right-10 bg-black text-white text-[10px] md:text-xs px-2 py-1 font-mono"
                             >
                                 SURFACE_HARDNESS →
                             </motion.div>
@@ -361,12 +361,12 @@ export default function HomeClient({ products }: { products: Product[] }) {
 
                 {/* ------------------ SECTION 3: OPERATOR SPOTLIGHT ------------------ */}
                 <section className="relative">
-                    <div className="bg-black text-white border-[8px] border-black p-10 -rotate-1 mx-4 md:mx-20 shadow-[20px_20px_0px_#fdf003]">
-                        <div className="absolute -top-6 -left-6 bg-pink-500 text-white px-6 py-2 border-[4px] border-black font-black italic uppercase text-xl shadow-[4px_4px_0px_#000]">
+                    <div className="bg-black text-white border-[8px] border-black p-6 md:p-10 -rotate-1 mx-0 md:mx-20 shadow-[10px_10px_0px_#fdf003] md:shadow-[20px_20px_0px_#fdf003]">
+                        <div className="absolute -top-4 -left-2 md:-top-6 md:-left-6 bg-pink-500 text-white px-4 md:px-6 py-2 border-[4px] border-black font-black italic uppercase text-lg md:text-xl shadow-[4px_4px_0px_#000]">
                             Operator_Spotlight
                         </div>
 
-                        <div className="flex flex-col md:flex-row gap-8 items-center">
+                        <div className="flex flex-col md:flex-row gap-8 items-center mt-6 md:mt-0">
                             <div className="w-full md:w-1/3 aspect-square bg-neutral-800 border-4 border-white grayscale hover:grayscale-0 transition-all cursor-pointer relative overflow-hidden group">
                                 <div className="absolute inset-0 flex items-center justify-center">
                                     <span className="font-black text-6xl opacity-20 italic">IMG</span>
@@ -376,13 +376,13 @@ export default function HomeClient({ products }: { products: Product[] }) {
                                 </div>
                             </div>
                             <div className="flex-1 text-center md:text-left">
-                                <h3 className="text-4xl font-black italic uppercase mb-2 text-yellow-400">
+                                <h3 className="text-3xl md:text-4xl font-black italic uppercase mb-2 text-yellow-400">
                                     "NEON_VANGUARD"
                                 </h3>
                                 <p className="font-mono text-neutral-400 mb-6 uppercase text-sm">
                                     Custom Build by AGENT_KAI // Tokyo, JP
                                 </p>
-                                <p className="text-xl italic font-bold leading-relaxed mb-8">
+                                <p className="text-lg md:text-xl italic font-bold leading-relaxed mb-8">
                                     "I mixed the MK-4 head with a custom resin body. The magnetic snapping feels incredible. Best kitbash base I've ever used."
                                 </p>
                                 <Link href="/hub" className="inline-block bg-white text-black px-6 py-3 font-black italic uppercase border-[4px] border-black shadow-[6px_6px_0px_#fff] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
@@ -399,13 +399,13 @@ export default function HomeClient({ products }: { products: Product[] }) {
                     whileInView="visible"
                     viewport={{ amount: 0.5 }}
                     variants={panelPop}
-                    className="bg-cyan-400 p-12 border-[8px] border-black text-center relative overflow-hidden"
+                    className="bg-cyan-400 p-6 md:p-12 border-[8px] border-black text-center relative overflow-hidden"
                 >
                     <div className="relative z-10 max-w-2xl mx-auto space-y-8">
-                        <h2 className="text-5xl md:text-7xl font-black italic uppercase leading-none tracking-tighter drop-shadow-md text-white stroke-black" style={{ WebkitTextStroke: "2px black" }}>
+                        <h2 className="text-4xl md:text-7xl font-black italic uppercase leading-none tracking-tighter drop-shadow-md text-white stroke-black" style={{ WebkitTextStroke: "1px black" }}>
                             DONT_MISS_THE_DROP
                         </h2>
-                        <p className="font-mono text-lg font-bold bg-black text-white inline-block px-4 py-1">
+                        <p className="font-mono text-sm md:text-lg font-bold bg-black text-white inline-block px-4 py-1">
                             // LIMITED_SLOTS_ONLY
                         </p>
 
@@ -420,7 +420,7 @@ export default function HomeClient({ products }: { products: Product[] }) {
                             </button>
                         </div>
 
-                        <p className="text-xs font-mono font-bold uppercase opacity-60">
+                        <p className="text-[10px] font-mono font-bold uppercase opacity-60">
                             *By transmitting, you agree to receive classified tactical updates. No spam. Only signal.
                         </p>
                     </div>
