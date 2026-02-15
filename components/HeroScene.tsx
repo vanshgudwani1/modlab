@@ -40,8 +40,8 @@ function AnimatedKnot() {
 
 export default function HeroScene() {
     return (
-        <div className="absolute inset-0 z-0 pointer-events-none opacity-60">
-            <Canvas camera={{ position: [0, 0, 5] }}>
+        <div className="absolute inset-0 z-0 pointer-events-none opacity-60 overflow-hidden">
+            <Canvas camera={{ position: [0, 0, 6], fov: 45 }} resize={{ scroll: false }}>
                 <ambientLight intensity={0.5} />
                 <directionalLight position={[10, 10, 5]} intensity={1} />
                 <AnimatedKnot />

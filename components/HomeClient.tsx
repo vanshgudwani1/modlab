@@ -108,7 +108,7 @@ export default function HomeClient({ products }: { products: Product[] }) {
                             drag
                             dragConstraints={{ left: -50, right: 50, top: -50, bottom: 50 }}
                             whileHover={{ scale: 1.2, rotate: 10 }}
-                            className="absolute -top-10 -right-10 bg-yellow-400 border-[6px] border-black p-10 text-6xl font-black italic shadow-[8px_8px_0px_#000] cursor-grab active:cursor-grabbing z-20"
+                            className="absolute -top-10 -right-10 bg-yellow-400 border-[6px] border-black p-10 text-6xl font-black italic shadow-[8px_8px_0px_#000] cursor-grab active:cursor-grabbing z-20 hidden md:block"
                         >
                             !
                         </motion.div>
@@ -147,10 +147,10 @@ export default function HomeClient({ products }: { products: Product[] }) {
                     </motion.div>
 
                     <motion.div
-                        initial={{ opacity: 0, x: 100, rotate: 5 }}
-                        whileInView={{ opacity: 1, x: 0, rotate: -1 }}
+                        initial={{ opacity: 0, y: 50 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         transition={{ type: "spring", bounce: 0.4 }}
-                        className="bg-black text-white border-[8px] border-black shadow-[20px_20px_0px_#fdf003] p-10 relative overflow-hidden"
+                        className="bg-black text-white border-[8px] border-black shadow-[10px_10px_0px_#fdf003] md:shadow-[20px_20px_0px_#fdf003] p-6 md:p-10 relative overflow-hidden transform md:rotate-[-1deg] translate-y-0"
                     >
                         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20" />
 

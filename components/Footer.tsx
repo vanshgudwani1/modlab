@@ -4,15 +4,15 @@ import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-black text-white py-20 px-6 border-t-[12px] border-yellow-400 relative overflow-hidden">
+    <footer className="w-full bg-black text-white py-10 md:py-20 px-4 md:px-6 border-t-[8px] md:border-t-[12px] border-yellow-400 relative overflow-hidden">
       {/* Background Halftone for Grit */}
       <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_2px,transparent_2px)] [background-size:10px_10px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 relative z-10">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 relative z-10">
 
         {/* 1. BRAND FINAL SLAP */}
         <div className="md:col-span-5 space-y-6">
-          <h2 className="text-7xl font-black italic tracking-tighter uppercase leading-none text-cyan-400">
+          <h2 className="text-5xl md:text-7xl font-black italic tracking-tighter uppercase leading-none text-cyan-400">
             MOD<br />LAB
           </h2>
           <div className="bg-white text-black p-4 rotate-1 border-2 border-black inline-block">

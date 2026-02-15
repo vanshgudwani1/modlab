@@ -5,8 +5,14 @@
     background-color: #f4f4f4;
     /* Subtle paper grain texture */
     background-image: url('https://www.transparenttextures.com/patterns/cardboard-flat.png');
-    @apply overflow-x-hidden;
+    @apply to-black overflow-x-hidden w-full;
   }
+}
+
+@layer utilities {
+    .text-shadow-sm {
+        text-shadow: 2px 2px 0px rgba(0,0,0,1);
+    }
 }
 
 @layer components {
