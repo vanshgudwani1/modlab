@@ -28,7 +28,7 @@ export default function Header({ user }: { user?: any }) {
 
           {/* Desktop Nav Links */}
           <nav className="hidden md:flex gap-4 md:gap-8 text-white font-black italic uppercase tracking-tighter text-xl whitespace-nowrap">
-            <Link href="/#vault" className="cursor-pointer hover:text-cyan-400 transition-colors">The_Vault</Link>
+            <Link href="/store" className="cursor-pointer hover:text-cyan-400 transition-colors">Store</Link>
             <Link href="/#portal" className="cursor-pointer hover:text-yellow-400 transition-colors">Portal</Link>
             <Link href="/hub" className="cursor-pointer hover:text-[#ec008c] transition-colors">Hub</Link>
           </nav>
@@ -98,7 +98,7 @@ export default function Header({ user }: { user?: any }) {
             </button>
 
             <nav className="flex flex-col gap-8 text-white font-black italic uppercase tracking-tighter text-4xl">
-              <Link href="/#vault" onClick={toggleMobileMenu} className="hover:text-cyan-400">The_Vault</Link>
+              <Link href="/store" onClick={toggleMobileMenu} className="hover:text-cyan-400">Store</Link>
               <Link href="/#portal" onClick={toggleMobileMenu} className="hover:text-yellow-400">Portal</Link>
               <Link href="/hub" onClick={toggleMobileMenu} className="hover:text-[#ec008c]">Hub</Link>
 

@@ -8,5 +8,11 @@ export default async function ModLabHome() {
     take: 3, // Show top 3 in vault on home
   });
 
-  return <HomeClient products={products} />;
+  // Fetch limited products for the "Limited Drops" section
+  const limitedProducts = await prisma.product.findMany({
+    where: { isLimited: true },
+    take: 3, // Show top 3 limited
+  });
+
+  return <HomeClient products={products} limitedProducts={limitedProducts} />;
 }

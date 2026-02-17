@@ -39,7 +39,7 @@ const stickerVariant: Variants = {
 
 /* ------------------ COMPONENT ------------------ */
 
-export default function HomeClient({ products }: { products: Product[] }) {
+export default function HomeClient({ products, limitedProducts = [] }: { products: Product[], limitedProducts?: Product[] }) {
     const containerRef = useRef<HTMLDivElement | null>(null);
     const prefersReducedMotion = useReducedMotion();
 
@@ -170,6 +170,72 @@ export default function HomeClient({ products }: { products: Product[] }) {
                         </motion.div>
                     </motion.div>
                 </section>
+
+                {/* ------------------ LIMITED DROPS ------------------ */}
+                {limitedProducts && limitedProducts.length > 0 && (
+                    <section className="space-y-12" id="limited-drops">
+                        <motion.div
+                            initial={{ scaleX: 0 }}
+                            whileInView={{ scaleX: 1 }}
+                            className="bg-yellow-400 text-black py-4 rotate-1 origin-right border-y-[6px] border-black"
+                        >
+                            <h2 className="text-3xl md:text-6xl font-black italic uppercase text-center tracking-tighter">
+                                ⚠ LIMITED_DROPS ⚠
+                            </h2>
+                        </motion.div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 perspective-[800px]">
+                            {limitedProducts.map((product, i) => (
+                                <Link href={`/store/${product.slug}`} key={product.id}>
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 50, rotateX: 20 }}
+                                        whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+                                        viewport={{ margin: "-50px" }}
+                                        transition={{ delay: i * 0.1 }}
+                                        whileHover={{
+                                            scale: 1.05,
+                                            rotate: i % 2 === 0 ? 1 : -1,
+                                            z: 50,
+                                            boxShadow: "20px 20px 0px #00ffff"
+                                        }}
+                                        className="bg-neutral-900 border-[6px] border-yellow-400 shadow-[15px_15px_0px_#000] p-4 cursor-pointer h-full flex flex-col transform-style-3d transition-all group"
+                                    >
+                                        <div className="aspect-[3/4] bg-black border-2 border-yellow-400/50 mb-4 flex items-center justify-center italic text-neutral-400 overflow-hidden relative">
+                                            {/* Limited Badge */}
+                                            <div className="absolute top-2 right-2 bg-red-600 text-white text-xs font-bold px-2 py-1 z-20 animate-pulse border-2 border-black">
+                                                LIMITED RUN
+                                            </div>
+
+                                            {/* Glitch Overlay on Hover */}
+                                            <div className="absolute inset-0 bg-yellow-400/20 opacity-0 group-hover:opacity-100 transition-opacity z-10 mix-blend-hard-light" />
+
+                                            <div className="absolute inset-0 bg-neutral-800 flex items-center justify-center">
+                                                {product.image ? (
+                                                    <img src={product.image} alt={product.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300" />
+                                                ) : (
+                                                    <span className="text-4xl font-black opacity-20 text-white">RELIC</span>
+                                                )}
+                                            </div>
+                                        </div>
+                                        <div className="mt-auto">
+                                            <p className="font-black italic uppercase text-center text-xl line-clamp-1 text-white group-hover:text-yellow-400 transition-colors">
+                                                {product.name}
+                                            </p>
+                                            <div className="flex justify-center items-center gap-2 mt-2">
+                                                <p className="font-mono font-bold text-center text-yellow-400">
+                                                    ${product.price}
+                                                </p>
+                                                {product.stock <= 0 && (
+                                                    <span className="text-[10px] bg-red-600 text-white px-1 font-bold uppercase">SOLD_OUT</span>
+                                                )}
+                                            </div>
+                                        </div>
+                                    </motion.div>
+                                </Link>
+                            ))}
+                        </div>
+                    </section>
+                )}
 
                 {/* ------------------ VAULT ------------------ */}
                 <section className="space-y-12" id="vault">
