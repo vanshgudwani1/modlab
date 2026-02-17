@@ -66,6 +66,13 @@ export async function createProduct(prevState: { message: string; success: boole
     const slug = formData.get('slug') as string;
     const price = parseFloat(formData.get('price') as string);
     const stock = parseInt(formData.get('stock') as string);
+
+    if (isNaN(price)) {
+        return { message: 'Invalid price. Please enter a valid number.', success: false };
+    }
+    if (isNaN(stock)) {
+        return { message: 'Invalid stock. Please enter a valid number.', success: false };
+    }
     const description = formData.get('description') as string;
     const imageFile = formData.get('image') as File | null;
     const isLimited = formData.get('isLimited') === 'on';
@@ -105,9 +112,12 @@ export async function createProduct(prevState: { message: string; success: boole
         });
         revalidatePath('/admin/products');
         return { message: 'Product Deployed!', success: true };
-    } catch (e) {
-        console.error(e);
-        return { message: 'Failed to create product', success: false };
+    } catch (e: any) {
+        console.error("Create Product Error:", e);
+        if (e.code === 'P2002' && e.meta?.target?.includes('slug')) {
+            return { message: 'Product with this ID (slug) already exists.', success: false };
+        }
+        return { message: `Failed to create product: ${e.message}`, success: false };
     }
 }
 

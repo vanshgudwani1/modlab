@@ -3,6 +3,7 @@ import "./global.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CartSidebar from "@/components/CartSidebar";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import { auth } from "@/auth";
 
@@ -33,6 +34,7 @@ export default async function RootLayout({
 
         <Footer /> {/* 2. ADD THIS LINE AT THE VERY BOTTOM */}
         <CartSidebar />
+        <SpeedInsights />
       </body>
     </html>
   );
