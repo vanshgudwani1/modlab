@@ -14,7 +14,7 @@ export const authConfig = {
 
       if (isOnAdmin) {
         if (isAdmin) return true;
-        return false; // Redirect non-admins
+        return false; // Redirect non-admins to login
       }
 
       if (isOnDashboard) {
@@ -23,6 +23,18 @@ export const authConfig = {
       }
 
       return true;
+    },
+    async jwt({ token, user }: any) {
+      if (user) {
+        token.role = user.role;
+      }
+      return token;
+    },
+    async session({ session, token }: any) {
+      if (token && session.user) {
+        session.user.role = token.role;
+      }
+      return session;
     },
   },
   providers: [], // Add providers with an empty array for now
