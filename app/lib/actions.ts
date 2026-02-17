@@ -87,11 +87,6 @@ export async function createProduct(prevState: { message: string; success: boole
             });
             imageUrl = blob.url;
         } else {
-            // Fallback if it's a string (though form will send File object if input type is file)
-            // If user decides to keep text input as option, we can check.
-            // For now, assuming file input only based on plan.
-            // If they typed a URL in a text input called 'image', it would come as string.
-            // Let's support both just in case they revert or mix.
             const imageString = formData.get('image');
             if (typeof imageString === 'string') {
                 imageUrl = imageString;
@@ -120,6 +115,65 @@ export async function createProduct(prevState: { message: string; success: boole
         return { message: `Failed to create product: ${e.message}`, success: false };
     }
 }
+
+export async function updateProduct(prevState: { message: string; success: boolean }, formData: FormData) {
+    const id = formData.get('id') as string;
+    const name = formData.get('name') as string;
+    const slug = formData.get('slug') as string;
+    const price = parseFloat(formData.get('price') as string);
+    const stock = parseInt(formData.get('stock') as string);
+    const description = formData.get('description') as string;
+    const imageFile = formData.get('image') as File | null;
+    const isLimited = formData.get('isLimited') === 'on';
+
+    if (!id) {
+        return { message: 'Product ID missing', success: false };
+    }
+
+    if (isNaN(price)) {
+        return { message: 'Invalid price. Please enter a valid number.', success: false };
+    }
+    if (isNaN(stock)) {
+        return { message: 'Invalid stock. Please enter a valid number.', success: false };
+    }
+
+    try {
+        const dataToUpdate: any = {
+            name,
+            slug,
+            price,
+            stock,
+            description,
+            isLimited,
+            dropDate: isLimited ? new Date() : null // Reset or set drop date? Logic says if limited, it has a date.
+        };
+
+        if (imageFile && imageFile.size > 0) {
+            const { put } = await import('@vercel/blob');
+            const blob = await put(imageFile.name, imageFile, {
+                access: 'public',
+            });
+            dataToUpdate.image = blob.url;
+        }
+
+        await prisma.product.update({
+            where: { id },
+            data: dataToUpdate
+        });
+
+        revalidatePath('/admin/products');
+        revalidatePath(`/admin/products/${id}`); // Validation
+        return { message: 'Product Updated Successfully!', success: true };
+    } catch (e: any) {
+        console.error("Update Product Error:", e);
+        if (e.code === 'P2002' && e.meta?.target?.includes('slug')) {
+            return { message: 'Product with this ID (slug) already exists.', success: false };
+        }
+        return { message: `Failed to update product: ${e.message}`, success: false };
+    }
+}
+
+
 
 export async function deleteProduct(id: string) {
     await prisma.product.delete({ where: { id } });

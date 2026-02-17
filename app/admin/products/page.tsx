@@ -38,9 +38,9 @@ export default async function AdminProductsPage() {
                                     {product.stock}
                                 </td>
                                 <td className="p-4 text-right flex justify-end gap-2">
-                                    <button className="p-2 bg-neutral-900 border border-neutral-600 hover:border-yellow-400 text-yellow-400 font-mono font-bold text-xs uppercase">
+                                    <Link href={`/admin/products/${product.id}`} className="p-2 bg-neutral-900 border border-neutral-600 hover:border-yellow-400 text-yellow-400 font-mono font-bold text-xs uppercase block text-center">
                                         Edit
-                                    </button>
+                                    </Link>
                                     <form action={async () => {
                                         'use server';
                                         await deleteProduct(product.id);
