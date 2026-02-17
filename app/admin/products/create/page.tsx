@@ -56,8 +56,8 @@ export default function CreateProductPage() {
                 </div>
 
                 <div className="space-y-2">
-                    <label className="text-neutral-400 text-xs font-mono uppercase">Image URL</label>
-                    <input type="text" name="image" className="w-full bg-neutral-900 border border-neutral-700 p-3 text-white focus:border-cyan-400 outline-none" placeholder="/products/..." />
+                    <label className="text-neutral-400 text-xs font-mono uppercase">Image File</label>
+                    <input type="file" name="image" accept="image/*" className="w-full bg-neutral-900 border border-neutral-700 p-3 text-white focus:border-cyan-400 outline-none" />
                 </div>
 
                 <div className="space-y-2">

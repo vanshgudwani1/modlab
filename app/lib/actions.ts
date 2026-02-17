@@ -67,10 +67,30 @@ export async function createProduct(prevState: { message: string; success: boole
     const price = parseFloat(formData.get('price') as string);
     const stock = parseInt(formData.get('stock') as string);
     const description = formData.get('description') as string;
-    const image = formData.get('image') as string;
+    const imageFile = formData.get('image') as File | null;
     const isLimited = formData.get('isLimited') === 'on';
 
+    let imageUrl = '';
+
     try {
+        if (imageFile && imageFile.size > 0) {
+            const { put } = await import('@vercel/blob');
+            const blob = await put(imageFile.name, imageFile, {
+                access: 'public',
+            });
+            imageUrl = blob.url;
+        } else {
+            // Fallback if it's a string (though form will send File object if input type is file)
+            // If user decides to keep text input as option, we can check.
+            // For now, assuming file input only based on plan.
+            // If they typed a URL in a text input called 'image', it would come as string.
+            // Let's support both just in case they revert or mix.
+            const imageString = formData.get('image');
+            if (typeof imageString === 'string') {
+                imageUrl = imageString;
+            }
+        }
+
         await prisma.product.create({
             data: {
                 name,
@@ -78,7 +98,7 @@ export async function createProduct(prevState: { message: string; success: boole
                 price,
                 stock,
                 description,
-                image,
+                image: imageUrl,
                 isLimited,
                 dropDate: isLimited ? new Date() : null
             }
