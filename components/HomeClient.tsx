@@ -79,17 +79,20 @@ export default function HomeClient({ products, limitedProducts = [] }: { product
                         <HeroScene />
                     </div>
 
+                    {/* Mobile: Strong bottom gradient to fade model legs and support text */}
+                    <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-neutral-950 via-neutral-950/80 to-transparent z-10 md:hidden pointer-events-none" />
+
                     {/* Content Overlay */}
-                    <div className="relative z-20 w-full max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 h-full items-center pointer-events-none">
+                    <div className="relative z-20 w-full max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 h-full items-end md:items-center pointer-events-none pb-12 md:pb-0">
 
                         {/* Text Content - Wider max-width & Better spacing */}
-                        {/* Mobile: mb-32 to push text up and leave room for model at bottom */}
-                        <div className="pointer-events-auto mt-20 md:mt-0 col-span-1 md:max-w-2xl z-30 mb-32 md:mb-0">
+                        {/* Mobile: justify-end to sit at bottom */}
+                        <div className="pointer-events-auto col-span-1 md:max-w-2xl z-30">
                             <motion.div
                                 initial={{ opacity: 0, scale: 0.95 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-                                className="space-y-10"
+                                className="space-y-6 md:space-y-10"
                             >
                                 <div className="space-y-4">
                                     <motion.div
