@@ -83,7 +83,8 @@ export default function HomeClient({ products, limitedProducts = [] }: { product
                     <div className="relative z-20 w-full max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 h-full items-center pointer-events-none">
 
                         {/* Text Content - Wider max-width & Better spacing */}
-                        <div className="pointer-events-auto mt-20 md:mt-0 col-span-1 md:max-w-2xl z-30">
+                        {/* Mobile: mb-32 to push text up and leave room for model at bottom */}
+                        <div className="pointer-events-auto mt-20 md:mt-0 col-span-1 md:max-w-2xl z-30 mb-32 md:mb-0">
                             <motion.div
                                 initial={{ opacity: 0, scale: 0.95 }}
                                 animate={{ opacity: 1, scale: 1 }}

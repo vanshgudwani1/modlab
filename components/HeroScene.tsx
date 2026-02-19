@@ -1,7 +1,7 @@
 'use client';
 
-import { Canvas, useFrame } from '@react-three/fiber';
-import { Float, useGLTF, Environment, ContactShadows, OrbitControls } from '@react-three/drei';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import { Float, useGLTF, Environment, ContactShadows } from '@react-three/drei';
 import { useRef } from 'react';
 import { Group } from 'three';
 
@@ -28,6 +28,22 @@ function Model(props: any) {
     );
 }
 
+function ResponsiveModel() {
+    const { viewport } = useThree();
+    const isMobile = viewport.width < 5; // Adjust threshold based on testing
+
+    // Desktop: Scale 2.5, Position [1.7, -0.7, 1]
+    // Mobile: Scale 1.8, Position [0, -2.5, 0] (Lower & Centered)
+    const scale = isMobile ? 1.8 : 2.5;
+    const position: [number, number, number] = isMobile ? [0, -2.2, 0] : [1.7, -0.7, 1];
+
+    return (
+        <Float speed={2} rotationIntensity={0.05} floatIntensity={0.1} floatingRange={[-0.02, 0.02]}>
+            <Model position={position} scale={scale} rotation={[0, 4.4, 0]} />
+        </Float>
+    );
+}
+
 export default function HeroScene() {
     return (
         <div className="absolute inset-0 z-0 h-[600px] md:h-full w-full pointer-events-none">
@@ -38,10 +54,7 @@ export default function HeroScene() {
                 <pointLight position={[-10, 0, -10]} intensity={1.5} color="#00ffff" />
                 <pointLight position={[10, 5, -5]} intensity={1.5} color="#ec008c" />
 
-                <Float speed={2} rotationIntensity={0.05} floatIntensity={0.1} floatingRange={[-0.02, 0.02]}>
-                    {/* Position on the right side: X: 2.5 (was 9.5 which is off-screen) */}
-                    <Model position={[1.7, -0.7, 1]} scale={2.5} rotation={[0, 4.4, 0]} />
-                </Float>
+                <ResponsiveModel />
 
                 <ContactShadows resolution={1024} scale={10} blur={2.5} opacity={0.5} far={10} color="#000000" />
                 <Environment preset="city" />
