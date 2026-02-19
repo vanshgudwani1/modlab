@@ -1,51 +1,53 @@
 'use client';
 
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Float, MeshDistortMaterial, TorusKnot } from '@react-three/drei';
+import { Float, useGLTF, Environment, ContactShadows, OrbitControls } from '@react-three/drei';
 import { useRef } from 'react';
 import { Group } from 'three';
 
-function AnimatedKnot() {
+function Model(props: any) {
+    const { scene } = useGLTF('/models/goku.glb');
     const ref = useRef<Group>(null);
 
     useFrame((state) => {
         if (ref.current) {
-            ref.current.rotation.x = state.clock.getElapsedTime() * 0.2;
-            ref.current.rotation.y = state.clock.getElapsedTime() * 0.3;
+            // Get base rotation from props (Y axis is index 1), default to 0
+            const rotationProp = props.rotation as [number, number, number] | undefined;
+            const baseY = rotationProp ? rotationProp[1] : 0;
+
+            // Gentle swaying motion (Left <-> Right)
+            // Math.sin(time * speed) * amplitude
+            ref.current.rotation.y = baseY + Math.sin(state.clock.getElapsedTime() * 0.5) * 0.15;
         }
     });
 
     return (
-        <Float speed={2} rotationIntensity={1} floatIntensity={1}>
-            <group ref={ref}>
-                <TorusKnot args={[1, 0.3, 128, 16]}>
-                    <MeshDistortMaterial
-                        color="#00ffff"
-                        attach="material"
-                        distort={0.4}
-                        speed={2}
-                        roughness={0}
-                        metalness={1}
-                        wireframe
-                    />
-                </TorusKnot>
-                {/* Inner solid core for better visibility */}
-                <TorusKnot args={[1, 0.3, 128, 16]} scale={0.9}>
-                    <meshBasicMaterial color="#ec008c" wireframe={false} opacity={0.1} transparent />
-                </TorusKnot>
-            </group>
-        </Float>
+        <group ref={ref} {...props} dispose={null}>
+            <primitive object={scene} />
+        </group>
     );
 }
 
 export default function HeroScene() {
     return (
-        <div className="absolute inset-0 z-0 pointer-events-none opacity-60 overflow-hidden">
-            <Canvas camera={{ position: [0, 0, 6], fov: 45 }} resize={{ scroll: false }}>
-                <ambientLight intensity={0.5} />
-                <directionalLight position={[10, 10, 5]} intensity={1} />
-                <AnimatedKnot />
+        <div className="absolute inset-0 z-0 h-[600px] md:h-full w-full pointer-events-none">
+            {/* Move camera back to capture more width (z: 8) and slightly up (y: 0.5) */}
+            <Canvas camera={{ position: [0, 0.5, 8], fov: 35 }}>
+                <ambientLight intensity={0.6} />
+                <spotLight position={[10, 10, 10]} angle={0.2} penumbra={1} intensity={1.2} castShadow />
+                <pointLight position={[-10, 0, -10]} intensity={1.5} color="#00ffff" />
+                <pointLight position={[10, 5, -5]} intensity={1.5} color="#ec008c" />
+
+                <Float speed={2} rotationIntensity={0.05} floatIntensity={0.1} floatingRange={[-0.02, 0.02]}>
+                    {/* Position on the right side: X: 2.5 (was 9.5 which is off-screen) */}
+                    <Model position={[1.7, -0.7, 1]} scale={2.5} rotation={[0, 4.4, 0]} />
+                </Float>
+
+                <ContactShadows resolution={1024} scale={10} blur={2.5} opacity={0.5} far={10} color="#000000" />
+                <Environment preset="city" />
             </Canvas>
         </div>
     );
 }
+
+useGLTF.preload('/models/goku.glb');

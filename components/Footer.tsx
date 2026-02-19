@@ -41,7 +41,10 @@ export default function Footer() {
             <nav className="flex flex-col gap-2 font-black italic uppercase text-lg text-neutral-400">
               <Link href="/about" className="cursor-pointer hover:text-white transition-colors">Origins</Link>
               <Link href="/process" className="cursor-pointer hover:text-white transition-colors">Manufacturing</Link>
-              <Link href="/terms" className="cursor-pointer hover:text-white transition-colors">Terms_&_Cond</Link>
+              <Link href="/shipping" className="cursor-pointer hover:text-white transition-colors">Shipping_Policy</Link>
+              <Link href="/refund" className="cursor-pointer hover:text-white transition-colors">Refund_Policy</Link>
+              <Link href="/privacy" className="cursor-pointer hover:text-white transition-colors">Privacy_Protocol</Link>
+              <a href="mailto:ops@modlab.in" className="cursor-pointer hover:text-cyan-400 transition-colors">Contact_Ops</a>
             </nav>
           </div>
         </div>
@@ -63,8 +66,19 @@ export default function Footer() {
               Discord
             </motion.div>
           </div>
-          <div className="mt-6 font-mono text-[10px] text-neutral-600 uppercase">
-            © 2026 MOD LAB STUDIO. ALL RIGHTS RESERVED. // MADE IN INDIA.
+
+          <div className="mt-8 pt-6 border-t border-neutral-800 space-y-4">
+            <div className="flex items-center gap-4">
+              <span className="bg-orange-500 text-black text-[10px] font-bold px-2 py-1 uppercase border border-orange-600">
+                PROUDLY_MADE_IN_INDIA 🇮🇳
+              </span>
+              <span className="text-[10px] font-mono text-neutral-500">
+                GST_REG: 07AAACH7411H1Z0
+              </span>
+            </div>
+            <div className="font-mono text-[10px] text-neutral-600 uppercase">
+              © 2026 MOD LAB STUDIO. ALL RIGHTS RESERVED.
+            </div>
           </div>
         </div>
 

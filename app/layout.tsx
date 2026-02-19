@@ -8,8 +8,31 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { auth } from "@/auth";
 
 export const metadata: Metadata = {
-  title: "MOD LAB // Action Figure Studio",
-  description: "Hand-painted, limited edition custom miniatures.",
+  title: "MOD LAB // High-End Custom Tactical Figures",
+  description: "Hand-finished, limited run resin art toys. Sculpted in Blender, cast in high-impact resin, and painted by master artists in India. Worldwide shipping.",
+  keywords: ["art toy", "resin figure", "tactical toy", "custom action figure", "indian artist", "limited edition"],
+  openGraph: {
+    title: "MOD LAB // High-End Custom Tactical Figures",
+    description: "Hand-finished, limited run resin art toys. Made in India. Worldwide Deployment.",
+    url: "https://modlab.in", // Assuming domain, can be updated later
+    siteName: "MOD LAB STUDIO",
+    images: [
+      {
+        url: "/og-image.jpg", // Needs actual image
+        width: 1200,
+        height: 630,
+        alt: "MOD LAB TACTICAL FIGURES",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "MOD LAB // Tactical Art Toys",
+    description: "High-impact resin figures. Hand-painted. Limited drops.",
+    creator: "@modlab_studio", // Placeholder
+  },
 };
 
 export default async function RootLayout({
