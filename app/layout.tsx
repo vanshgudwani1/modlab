@@ -6,6 +6,11 @@ import CartSidebar from "@/components/CartSidebar";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import { auth } from "@/auth";
+import { Geist } from "next/font/google";
+import { cn } from "@/lib/utils";
+import SplashCursor from "@/components/SplashCursor";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 export const metadata: Metadata = {
   title: "MOD LAB // High-End Custom Tactical Figures",
@@ -47,9 +52,10 @@ export default async function RootLayout({
   const session = await auth();
 
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={cn("font-sans", geist.variable)}>
       <body className="antialiased bg-[#f0f0f0]">
         <Header user={session?.user} /> {/* Your header at the top */}
+        <SplashCursor />
 
         <main>
           {children} {/* This is where your long scrolling page goes */}
