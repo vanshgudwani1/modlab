@@ -329,7 +329,7 @@ export default function HomeClient({ products, limitedProducts = [] }: { product
 
                                                 <div className="flex justify-center items-center gap-2 pt-2 border-t border-neutral-800">
                                                     <p className="font-mono font-bold text-center text-yellow-400 text-lg">
-                                                        ${product.price}
+                                                        ₹{product.price}
                                                     </p>
                                                     {product.stock <= 0 && (
                                                         <span className="text-[10px] bg-red-600 text-white px-1 font-bold uppercase">SOLD_OUT</span>
@@ -399,7 +399,7 @@ export default function HomeClient({ products, limitedProducts = [] }: { product
                                             <div className="mt-auto pt-4 border-t-2 border-neutral-200 flex justify-between items-end">
                                                 <span className="font-mono text-xs font-bold text-neutral-500 uppercase">IN_STOCK</span>
                                                 <p className="font-mono font-bold text-xl text-cyan-600">
-                                                    ${product.price}
+                                                    ₹{product.price}
                                                 </p>
                                             </div>
                                         </div>

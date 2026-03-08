@@ -33,7 +33,7 @@ export default async function AdminProductsPage() {
                             <tr key={product.id} className="border-b border-neutral-700 hover:bg-neutral-700/50 transition-colors">
                                 <td className="p-4 font-bold text-white">{product.name}</td>
                                 <td className="p-4 font-mono">{product.slug}</td>
-                                <td className="p-4 text-cyan-400">${product.price}</td>
+                                <td className="p-4 text-cyan-400">₹{product.price}</td>
                                 <td className={`p-4 font-mono font-bold ${product.stock < 10 ? 'text-red-500' : 'text-green-500'}`}>
                                     {product.stock}
                                 </td>

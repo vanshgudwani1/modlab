@@ -40,7 +40,7 @@ export default async function LimitedRunPage() {
                                     <div className="mt-auto">
                                         <h3 className="font-black italic uppercase text-2xl leading-none mb-2 text-white">{product.name}</h3>
                                         <div className="flex justify-between items-center">
-                                            <span className="font-mono font-bold text-lg text-yellow-400">${product.price}</span>
+                                            <span className="font-mono font-bold text-lg text-yellow-400">₹{product.price}</span>
                                             {product.stock > 0 ? (
                                                 <span className="text-xs font-bold bg-yellow-400 text-black px-2 py-1 uppercase">Available</span>
                                             ) : (

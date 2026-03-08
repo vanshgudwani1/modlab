@@ -45,9 +45,12 @@ async function main() {
             slug: 'cyber-ninja-mk1',
             image: '/products/cyber-ninja-mk1_front.jpg',
             description: 'Stealth operative with neon katana accents. High articulation.',
-            price: 120.00,
+            price: 12000.00,
+            discountPrice: 9500.00,
+            category: 'figures',
             stock: 50,
             isLimited: false,
+            isFeatured: true,
         }
     })
 
@@ -70,7 +73,8 @@ async function main() {
             slug: 'golden-vanguard-le',
             image: '/drops/golden-vanguard_thumb.jpg',
             description: 'Commemorative edition. Real gold leaf detailing.',
-            price: 500.00,
+            price: 50000.00,
+            category: 'custom',
             stock: 100,
             maxSupply: 100,
             isLimited: true,

@@ -74,8 +74,12 @@ export async function createProduct(prevState: { message: string; success: boole
         return { message: 'Invalid stock. Please enter a valid number.', success: false };
     }
     const description = formData.get('description') as string;
+    const category = formData.get('category') as string || 'uncategorized';
+    const discountPriceVal = formData.get('discountPrice') as string;
+    const discountPrice = discountPriceVal && !isNaN(parseFloat(discountPriceVal)) ? parseFloat(discountPriceVal) : null;
     const imageFile = formData.get('image') as File | null;
     const isLimited = formData.get('isLimited') === 'on';
+    const isFeatured = formData.get('isFeatured') === 'on';
 
     let imageUrl = '';
 
@@ -98,10 +102,13 @@ export async function createProduct(prevState: { message: string; success: boole
                 name,
                 slug,
                 price,
+                discountPrice,
+                category,
                 stock,
                 description,
                 image: imageUrl,
                 isLimited,
+                isFeatured,
                 dropDate: isLimited ? new Date() : null
             }
         });
@@ -123,8 +130,12 @@ export async function updateProduct(prevState: { message: string; success: boole
     const price = parseFloat(formData.get('price') as string);
     const stock = parseInt(formData.get('stock') as string);
     const description = formData.get('description') as string;
+    const category = formData.get('category') as string || 'uncategorized';
+    const discountPriceVal = formData.get('discountPrice') as string;
+    const discountPrice = discountPriceVal && !isNaN(parseFloat(discountPriceVal)) ? parseFloat(discountPriceVal) : null;
     const imageFile = formData.get('image') as File | null;
     const isLimited = formData.get('isLimited') === 'on';
+    const isFeatured = formData.get('isFeatured') === 'on';
 
     if (!id) {
         return { message: 'Product ID missing', success: false };
@@ -142,9 +153,12 @@ export async function updateProduct(prevState: { message: string; success: boole
             name,
             slug,
             price,
+            discountPrice,
+            category,
             stock,
             description,
             isLimited,
+            isFeatured,
             dropDate: isLimited ? new Date() : null // Reset or set drop date? Logic says if limited, it has a date.
         };
 

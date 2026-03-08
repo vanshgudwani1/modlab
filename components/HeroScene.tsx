@@ -35,7 +35,7 @@ function ResponsiveModel() {
     // Desktop: Scale 2.5, Position [1.7, -0.7, 1]
     // Mobile: Scale 2.1, Position [0, 1.2, 0] (Start high, head visible)
     const scale = isMobile ? 2.1 : 2.5;
-    const position: [number, number, number] = isMobile ? [0, 1.2, 0] : [1.7, -0.7, 1];
+    const position: [number, number, number] = isMobile ? [0, 0.7, 0] : [1.7, -0.7, 1];
 
     return (
         <Float speed={2} rotationIntensity={0.05} floatIntensity={0.1} floatingRange={[-0.02, 0.02]}>

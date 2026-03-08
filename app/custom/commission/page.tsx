@@ -46,11 +46,11 @@ export default function CommissionPage() {
                         </div>
 
                         <div className="space-y-2">
-                            <label className="block font-black italic uppercase text-cyan-400">BUDGET_RANGE (USD)</label>
+                            <label className="block font-black italic uppercase text-cyan-400">BUDGET_RANGE (INR)</label>
                             <select className="w-full bg-black border-4 border-white p-4 font-bold text-white focus:border-cyan-400 outline-none">
-                                <option>$200 - $500 (Standard)</option>
-                                <option>$500 - $1000 (High Detail)</option>
-                                <option>$1000+ (Masterpiece)</option>
+                                <option>₹15,000 - ₹40,000 (Standard)</option>
+                                <option>₹40,000 - ₹80,000 (High Detail)</option>
+                                <option>₹80,000+ (Masterpiece)</option>
                             </select>
                         </div>
 

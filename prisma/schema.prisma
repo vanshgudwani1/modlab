@@ -43,18 +43,21 @@ model Post {
 }
 
 model Product {
-  id          String   @id @default(cuid())
-  name        String
-  slug        String   @unique
-  image       String?
-  description String
-  price       Float
-  stock       Int
-  isLimited   Boolean  @default(false)
-  maxSupply   Int?
-  dropDate    DateTime?
-  createdAt   DateTime @default(now())
-  orders      Order[]
+  id            String   @id @default(cuid())
+  name          String
+  slug          String   @unique
+  image         String?
+  description   String
+  price         Float
+  discountPrice Float?
+  category      String   @default("uncategorized")
+  stock         Int
+  isLimited     Boolean  @default(false)
+  isFeatured    Boolean  @default(false)
+  maxSupply     Int?
+  dropDate      DateTime?
+  createdAt     DateTime @default(now())
+  orders        Order[]
 }
 
 model Order {

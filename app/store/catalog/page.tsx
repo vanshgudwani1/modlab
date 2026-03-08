@@ -32,7 +32,7 @@ export default async function CatalogPage() {
                                 <div className="mt-auto">
                                     <h3 className="font-black italic uppercase text-2xl leading-none mb-2">{product.name}</h3>
                                     <div className="flex justify-between items-center">
-                                        <span className="font-mono font-bold text-lg">${product.price}</span>
+                                        <span className="font-mono font-bold text-lg">₹{product.price}</span>
                                         <span className="text-xs font-bold bg-black text-white px-2 py-1 uppercase">In_Stock</span>
                                     </div>
                                 </div>

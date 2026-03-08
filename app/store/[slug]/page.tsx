@@ -27,7 +27,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                             {product.name}
                         </h1>
                         <div className="flex items-center gap-4">
-                            <span className="text-3xl font-mono font-bold text-cyan-600">${product.price}</span>
+                            <span className="text-3xl font-mono font-bold text-cyan-600">₹{product.price}</span>
                             <span className="bg-black text-white px-3 py-1 font-mono text-sm font-bold uppercase">
                                 Stock: {product.stock}
                             </span>

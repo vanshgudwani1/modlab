@@ -49,7 +49,7 @@ export default async function DropsPage() {
                                         </div>
                                         <div className="text-center md:border-l border-neutral-700 md:pl-4">
                                             <p className="text-xs font-mono uppercase text-neutral-500">Price</p>
-                                            <p className="text-xl font-black italic text-cyan-400">${drop.price}</p>
+                                            <p className="text-xl font-black italic text-cyan-400">₹{drop.price}</p>
                                         </div>
                                     </div>
 

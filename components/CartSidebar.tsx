@@ -70,10 +70,10 @@ export default function CartSidebar() {
                                                 {item.name}
                                             </h3>
                                             <p className="font-mono text-sm text-neutral-500">
-                                                Qty: {item.quantity} x ${item.price}
+                                                Qty: {item.quantity} x ₹{item.price}
                                             </p>
                                             <p className="font-black text-cyan-600 mt-1">
-                                                ${item.price * item.quantity}
+                                                ₹{item.price * item.quantity}
                                             </p>
                                         </div>
                                         <button
@@ -91,7 +91,7 @@ export default function CartSidebar() {
                         <div className="border-t-[8px] border-black p-6 bg-neutral-50 space-y-6">
                             <div className="flex justify-between items-center text-2xl font-black italic uppercase">
                                 <span>Total:</span>
-                                <span>${total.toFixed(2)}</span>
+                                <span>₹{total.toFixed(2)}</span>
                             </div>
 
                             <button

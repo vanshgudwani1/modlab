@@ -37,8 +37,25 @@ export default function EditProductForm({ product }: { product: any }) {
 
             <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                    <label className="text-neutral-400 text-xs font-mono uppercase">Price (USD)</label>
+                    <label className="text-neutral-400 text-xs font-mono uppercase">Base Price (INR)</label>
                     <input type="number" name="price" defaultValue={product.price} step="0.01" required className="w-full bg-neutral-900 border border-neutral-700 p-3 text-white focus:border-cyan-400 outline-none" placeholder="0.00" />
+                </div>
+                <div className="space-y-2">
+                    <label className="text-neutral-400 text-xs font-mono uppercase">Discount Price (INR)</label>
+                    <input type="number" name="discountPrice" defaultValue={product.discountPrice} step="0.01" className="w-full bg-neutral-900 border border-neutral-700 p-3 text-white focus:border-cyan-400 outline-none" placeholder="0.00" />
+                </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-2">
+                    <label className="text-neutral-400 text-xs font-mono uppercase">Category</label>
+                    <select name="category" defaultValue={product.category} className="w-full bg-neutral-900 border border-neutral-700 p-3 text-white focus:border-cyan-400 outline-none uppercase font-mono text-sm">
+                        <option value="figures">Figures</option>
+                        <option value="accessories">Accessories</option>
+                        <option value="custom">Custom</option>
+                        <option value="digital">Digital</option>
+                        <option value="merch">Merch</option>
+                    </select>
                 </div>
                 <div className="space-y-2">
                     <label className="text-neutral-400 text-xs font-mono uppercase">Stock Count</label>
@@ -62,11 +79,19 @@ export default function EditProductForm({ product }: { product: any }) {
                 <input type="file" name="image" accept="image/*" className="w-full bg-neutral-900 border border-neutral-700 p-3 text-white focus:border-cyan-400 outline-none" />
             </div>
 
-            <div className="space-y-2">
-                <label className="flex items-center gap-2 cursor-pointer">
-                    <input type="checkbox" name="isLimited" defaultChecked={product.isLimited} className="w-5 h-5 accent-cyan-400" />
-                    <span className="text-white font-bold uppercase">Limited Run?</span>
-                </label>
+            <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-2">
+                    <label className="flex items-center gap-2 cursor-pointer">
+                        <input type="checkbox" name="isLimited" defaultChecked={product.isLimited} className="w-5 h-5 accent-cyan-400" />
+                        <span className="text-white font-bold uppercase">Limited Run?</span>
+                    </label>
+                </div>
+                <div className="space-y-2">
+                    <label className="flex items-center gap-2 cursor-pointer">
+                        <input type="checkbox" name="isFeatured" defaultChecked={product.isFeatured} className="w-5 h-5 accent-cyan-400" />
+                        <span className="text-white font-bold uppercase">Featured?</span>
+                    </label>
+                </div>
             </div>
 
             <div className="flex gap-4">
